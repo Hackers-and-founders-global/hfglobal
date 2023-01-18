@@ -6,6 +6,7 @@ Plataforma de la comunidad Hackers/Founders
 
 * _Instalar Laravel 9.0._
 * _Instalar MySQL 8.0._
+* _Instalar Laravel Jetstream 2.15_
 
 ## Autores ✒️
 
