@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\API\OccupationController;
+use App\Http\Controllers\API\AuthController;
+use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +17,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * API route for register new user
+ */
+Route::post('/register', [AuthController::class, 'register']);
+
+/**
+ * API route for login user
+ */
+Route::post('/login', [AuthController::class, 'login']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::group(['middleware' => ['auth:sanctum']], function() {
+    Route::apiResource('occupations', OccupationController::class);
+
+    /**
+     * API route for logout user
+     */
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
