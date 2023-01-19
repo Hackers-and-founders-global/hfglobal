@@ -14,6 +14,13 @@ class OccupationController extends Controller
    * Display a listing of the resource.
    *
    * @return \Illuminate\Http\Response
+   * 
+   * @OA\Get(
+   *    path="/api/occupations",
+   *    summary="Occupations List",
+   *    @OA\Response(response=200, description="Show all occupations"),
+   *    @OA\Response(response="default", description="An error has occurred")
+   * )
    */
   public function index()
   {
@@ -37,6 +44,13 @@ class OccupationController extends Controller
    *
    * @param  \App\Http\Requests\API\Occupations\StoreOccupationRequest  $request
    * @return \Illuminate\Http\Response
+   * 
+   * @OA\Post(
+   *    path="/api/occupations",
+   *    summary="Create Occupation",
+   *    @OA\Parameter(name="name", in="query", description="Occupation's Name", required=true),
+   *    @OA\Response(response=200, description="Occupation Created")
+   * )
    */
   public function store(StoreOccupationRequest $request)
   {
@@ -62,6 +76,14 @@ class OccupationController extends Controller
    *
    * @param  \App\Models\Occupation  $occupation
    * @return \Illuminate\Http\Response
+   * 
+   * @OA\Get(
+   *    path="/api/occupations/{occupation}",
+   *    summary="Occupation",
+   *    @OA\Parameter(name="occupation", in="path", description="Occupation's ID", required=true),
+   *    @OA\Response(response=200, description="Show Occupation"),
+   *    @OA\Response(response="default", description="An error has occurred")
+   * )
    */
   public function show(Occupation $occupation)
   {
@@ -77,6 +99,13 @@ class OccupationController extends Controller
    * @param  \App\Http\Requests\API\Occupations\UpdateOccupationRequest  $request
    * @param  \App\Models\Occupation  $occupation
    * @return \Illuminate\Http\Response
+   * 
+   * @OA\Put(
+   *    path="/api/occupations/{occupation}",
+   *    summary="Update Occupation",
+   *    @OA\Parameter(name="name", in="path", description="Occupation's Name", required=true),
+   *    @OA\Response(response=200, description="Occupation Updated")
+   * )
    */
   public function update(UpdateOccupationRequest $request, Occupation $occupation)
   {
@@ -102,6 +131,14 @@ class OccupationController extends Controller
    *
    * @param  \App\Models\Occupation  $occupation
    * @return \Illuminate\Http\Response
+   * 
+   * @OA\Delete(
+   *    path="/api/occupations/{occupation}",
+   *    summary="Delete Occupation",
+   *    @OA\Parameter(name="occupation", in="path", description="Occupation's ID", required=true),
+   *    @OA\Response(response=200, description="Occupation Deleted"),
+   *    @OA\Response(response="default", description="An error has occurred")
+   * )
    */
   public function destroy(Occupation $occupation)
   {

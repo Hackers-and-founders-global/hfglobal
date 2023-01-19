@@ -9,6 +9,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * @OA\Info(
+ *    title="H/F Platform API",
+ *    version="1.0",
+ *    description="H/F Platform API",
+ *    @OA\Contact(name="Dayan Betancourt", email="dayan@hf.cx"),
+ *    @OA\License(name="MIT license", url="https://opensource.org/licenses/MIT")
+ * )
+ * 
+ * @OA\Server(url="http://hfglobal.local:8080")
+ */
 class AuthController extends Controller
 {
   /**
@@ -16,6 +27,15 @@ class AuthController extends Controller
    *
    * @param  \App\Http\Requests\API\Users\RegisterUserRequest  $request
    * @return \Illuminate\Http\Response
+   * 
+   * @OA\Post(
+   *    path="/api/register",
+   *    summary="Register User",
+   *    @OA\Parameter(name="name", in="query", description="User's Name", required=true),
+   *    @OA\Parameter(name="email", in="query", description="User's Email", required=true),
+   *    @OA\Parameter(name="password", in="query", description="User's Password", required=true),
+   *    @OA\Response(response=200, description="Register User")
+   * )
    */
   public function register(RegisterUserRequest $request)
   {
@@ -39,6 +59,14 @@ class AuthController extends Controller
    * 
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
+   * 
+   * @OA\Post(
+   *    path="/api/login",
+   *    summary="Login User",
+   *    @OA\Parameter(name="email", in="query", description="User's Email", required=true),
+   *    @OA\Parameter(name="password", in="query", description="User's Password", required=true),
+   *    @OA\Response(response=200, description="Login User")
+   * )
    */
   public function login(Request $request)
   {
@@ -62,6 +90,12 @@ class AuthController extends Controller
    * Logout user
    * 
    * @return \Illuminate\Http\Response
+   * 
+   * @OA\Post(
+   *    path="/api/logout",
+   *    summary="Logout User",
+   *    @OA\Response(response=200, description="Logout User")
+   * )
    */
   public function logout()
   {

@@ -1,0 +1,188 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "H/F Platform API",
+        "description": "H/F Platform API",
+        "contact": {
+            "name": "Dayan Betancourt",
+            "email": "dayan@hf.cx"
+        },
+        "license": {
+            "name": "MIT license",
+            "url": "https://opensource.org/licenses/MIT"
+        },
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://hfglobal.local:8080"
+        }
+    ],
+    "paths": {
+        "/api/register": {
+            "post": {
+                "summary": "Register User",
+                "description": "Store a new user",
+                "operationId": "a718f172ff3ac464d723835815f8fb57",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "User's Name",
+                        "required": true
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User's Email",
+                        "required": true
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User's Password",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Register User"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "summary": "Login User",
+                "description": "Login user",
+                "operationId": "44212a9096e4b09358281e9ec8a0701d",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User's Email",
+                        "required": true
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User's Password",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Login User"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "summary": "Logout User",
+                "description": "Logout user",
+                "operationId": "79854151e609bd20032aa5aa4d5a35c0",
+                "responses": {
+                    "200": {
+                        "description": "Logout User"
+                    }
+                }
+            }
+        },
+        "/api/occupations": {
+            "get": {
+                "summary": "Occupations List",
+                "description": "Display a listing of the resource.",
+                "operationId": "560969ad18564364c059389ebc65e6f2",
+                "responses": {
+                    "200": {
+                        "description": "Show all occupations"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create Occupation",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "7cdb34ae54c2c7a6973d6a190a2682e5",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Occupation's Name",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Occupation Created"
+                    }
+                }
+            }
+        },
+        "/api/occupations/{occupation}": {
+            "get": {
+                "summary": "Occupation",
+                "description": "Display the specified resource.",
+                "operationId": "64b8a28013c820498496c8a5c6564d7b",
+                "parameters": [
+                    {
+                        "name": "occupation",
+                        "in": "path",
+                        "description": "Occupation's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Occupation"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update Occupation",
+                "description": "Update the specified resource in storage.",
+                "operationId": "d2d1be08fc3e42a8bf7a36e98c32f1ab",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "Occupation's Name",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Occupation Updated"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete Occupation",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "2a7b9adeec021edef61b265885ac4747",
+                "parameters": [
+                    {
+                        "name": "occupation",
+                        "in": "path",
+                        "description": "Occupation's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Occupation Deleted"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                }
+            }
+        }
+    }
+}
