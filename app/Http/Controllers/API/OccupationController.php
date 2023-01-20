@@ -17,6 +17,7 @@ class OccupationController extends Controller
    * 
    * @OA\Get(
    *    path="/api/occupations",
+   *    tags={"occupations"},
    *    summary="Occupations List",
    *    @OA\Response(response=200, description="Show all occupations"),
    *    @OA\Response(response="default", description="An error has occurred")
@@ -47,6 +48,7 @@ class OccupationController extends Controller
    * 
    * @OA\Post(
    *    path="/api/occupations",
+   *    tags={"occupations"},
    *    summary="Create Occupation",
    *    @OA\Parameter(name="name", in="query", description="Occupation's Name", required=true),
    *    @OA\Response(response=200, description="Occupation Created")
@@ -79,6 +81,7 @@ class OccupationController extends Controller
    * 
    * @OA\Get(
    *    path="/api/occupations/{occupation}",
+   *    tags={"occupations"},
    *    summary="Occupation",
    *    @OA\Parameter(name="occupation", in="path", description="Occupation's ID", required=true),
    *    @OA\Response(response=200, description="Show Occupation"),
@@ -102,6 +105,7 @@ class OccupationController extends Controller
    * 
    * @OA\Put(
    *    path="/api/occupations/{occupation}",
+   *    tags={"occupations"},
    *    summary="Update Occupation",
    *    @OA\Parameter(name="name", in="path", description="Occupation's Name", required=true),
    *    @OA\Response(response=200, description="Occupation Updated")
@@ -134,6 +138,7 @@ class OccupationController extends Controller
    * 
    * @OA\Delete(
    *    path="/api/occupations/{occupation}",
+   *    tags={"occupations"},
    *    summary="Delete Occupation",
    *    @OA\Parameter(name="occupation", in="path", description="Occupation's ID", required=true),
    *    @OA\Response(response=200, description="Occupation Deleted"),
