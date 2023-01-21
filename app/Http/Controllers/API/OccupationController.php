@@ -19,6 +19,7 @@ class OccupationController extends Controller
    *    path="/api/occupations",
    *    tags={"occupations"},
    *    summary="Occupations List",
+   *    security={{"sanctum":{}}},
    *    @OA\Response(response=200, description="Show all occupations"),
    *    @OA\Response(response="default", description="An error has occurred")
    * )

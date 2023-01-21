@@ -15,7 +15,16 @@
     },
     "servers": [
         {
-            "url": "https://hfglobal.hfmaracay.com/"
+            "url": "http://hfglobal.local:8080/",
+            "description": "Local Server"
+        },
+        {
+            "url": "https://hfglobal.hfmaracay.com/",
+            "description": "Test Server"
+        },
+        {
+            "url": "https://hf.cx/",
+            "description": "Production Server"
         }
     ],
     "paths": {
@@ -113,7 +122,12 @@
                     "default": {
                         "description": "An error has occurred"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -206,6 +220,16 @@
                         "description": "An error has occurred"
                     }
                 }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "sanctum": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
             }
         }
     }
