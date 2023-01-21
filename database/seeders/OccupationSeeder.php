@@ -25,6 +25,5 @@ class OccupationSeeder extends Seeder
         Occupation::factory()->create(['name' => 'Minería']);
         Occupation::factory()->create(['name' => 'Publicidad']);
         Occupation::factory()->create(['name' => 'Banca']);
-        Occupation::factory()->create(['name' => 'Abigail']);
     }
 }

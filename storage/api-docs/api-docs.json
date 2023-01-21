@@ -104,7 +104,12 @@
                     "200": {
                         "description": "Logout User"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/api/occupations": {
@@ -148,7 +153,12 @@
                     "200": {
                         "description": "Occupation Created"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         },
         "/api/occupations/{occupation}": {
@@ -174,7 +184,12 @@
                     "default": {
                         "description": "An error has occurred"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -185,8 +200,14 @@
                 "operationId": "d2d1be08fc3e42a8bf7a36e98c32f1ab",
                 "parameters": [
                     {
-                        "name": "name",
+                        "name": "occupation",
                         "in": "path",
+                        "description": "Occupation's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
                         "description": "Occupation's Name",
                         "required": true
                     }
@@ -195,7 +216,12 @@
                     "200": {
                         "description": "Occupation Updated"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -219,7 +245,12 @@
                     "default": {
                         "description": "An error has occurred"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
             }
         }
     },
