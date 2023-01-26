@@ -252,6 +252,147 @@
                     }
                 ]
             }
+        },
+        "/api/social_media": {
+            "get": {
+                "tags": [
+                    "social media"
+                ],
+                "summary": "Social Media List",
+                "description": "Display a listing of the resource.",
+                "operationId": "1152128581f272063dace621e93f8068",
+                "responses": {
+                    "200": {
+                        "description": "Show all social media"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "social media"
+                ],
+                "summary": "Create Social Media",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "407dd0ccd0bba9a73ece7fce28ec22b0",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Social Media's Name",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Social Media Created"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/social_media/{socialMedia}": {
+            "get": {
+                "tags": [
+                    "social media"
+                ],
+                "summary": "Social Media",
+                "description": "Display the specified resource.",
+                "operationId": "457569135ecc8ced3caf3940a4799f25",
+                "parameters": [
+                    {
+                        "name": "socialMedia",
+                        "in": "path",
+                        "description": "Social Media's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Social Media"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "social media"
+                ],
+                "summary": "Update Social Media",
+                "description": "Update the specified resource in storage.",
+                "operationId": "9bed3f73d7531a0f22b6d2e10f36cc3f",
+                "parameters": [
+                    {
+                        "name": "socialMedia",
+                        "in": "path",
+                        "description": "Social Media's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Social Media's Name",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Social Media Updated"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "social media"
+                ],
+                "summary": "Delete Social Media",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "e451c06f4b5e928e0ad7d0f993129693",
+                "parameters": [
+                    {
+                        "name": "socialMedia",
+                        "in": "path",
+                        "description": "Social Media's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Social Media Deleted"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
         }
     },
     "components": {

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\API\Occupations\StoreOccupationRequest;
-use App\Http\Requests\API\Occupations\UpdateOccupationRequest;
-use App\Models\Occupation;
+use App\Http\Requests\API\SocialMedia\StoreSocialMediaRequest;
+use App\Http\Requests\API\SocialMedia\UpdateSocialMediaRequest;
+use App\Models\SocialMedia;
 use Illuminate\Http\JsonResponse;
 
-class OccupationController extends Controller
+class SocialMediaController extends Controller
 {
   /**
    * Display a listing of the resource.
@@ -16,18 +16,18 @@ class OccupationController extends Controller
    * @return \Illuminate\Http\Response
    * 
    * @OA\Get(
-   *    path="/api/occupations",
-   *    tags={"occupations"},
-   *    summary="Occupations List",
+   *    path="/api/social_media",
+   *    tags={"social media"},
+   *    summary="Social Media List",
    *    security={{"sanctum":{}}},
-   *    @OA\Response(response=200, description="Show all occupations"),
+   *    @OA\Response(response=200, description="Show all social media"),
    *    @OA\Response(response="default", description="An error has occurred")
    * )
    */
   public function index()
   {
     try {
-      $occupations = Occupation::all();
+      $social_media = SocialMedia::all();
     } catch (\Throwable $th) {
       return response()->json([
         'data' => [],
@@ -36,7 +36,7 @@ class OccupationController extends Controller
     }
 
     return response()->json([
-      'data' => $occupations,
+      'data' => $social_media,
       'message' => 'Succeed'
     ], JsonResponse::HTTP_OK);
   }
@@ -44,22 +44,22 @@ class OccupationController extends Controller
   /**
    * Store a newly created resource in storage.
    *
-   * @param  \App\Http\Requests\API\Occupations\StoreOccupationRequest  $request
+   * @param  \App\Http\Requests\API\SocialMedia\StoreSocialMediaRequest  $request
    * @return \Illuminate\Http\Response
    * 
    * @OA\Post(
-   *    path="/api/occupations",
-   *    tags={"occupations"},
-   *    summary="Create Occupation",
+   *    path="/api/social_media",
+   *    tags={"social media"},
+   *    summary="Create Social Media",
    *    security={{"sanctum":{}}},
-   *    @OA\Parameter(name="name", in="query", description="Occupation's Name", required=true),
-   *    @OA\Response(response=200, description="Occupation Created")
+   *    @OA\Parameter(name="name", in="query", description="Social Media's Name", required=true),
+   *    @OA\Response(response=200, description="Social Media Created")
    * )
    */
-  public function store(StoreOccupationRequest $request)
+  public function store(StoreSocialMediaRequest $request)
   {
     try {
-      $occupation = Occupation::create([
+      $social_media = SocialMedia::create([
         'name' => $request->name
       ]);
     } catch (\Throwable $th) {
@@ -70,7 +70,7 @@ class OccupationController extends Controller
     }
 
     return response()->json([
-      'data' => $occupation,
+      'data' => $social_media,
       'message' => 'Succeed'
     ], JsonResponse::HTTP_OK);
   }
@@ -78,23 +78,23 @@ class OccupationController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param  \App\Models\Occupation  $occupation
+   * @param  \App\Models\SocialMedia  $socialMedia
    * @return \Illuminate\Http\Response
    * 
    * @OA\Get(
-   *    path="/api/occupations/{occupation}",
-   *    tags={"occupations"},
-   *    summary="Occupation",
+   *    path="/api/social_media/{socialMedia}",
+   *    tags={"social media"},
+   *    summary="Social Media",
    *    security={{"sanctum":{}}},
-   *    @OA\Parameter(name="occupation", in="path", description="Occupation's ID", required=true),
-   *    @OA\Response(response=200, description="Show Occupation"),
+   *    @OA\Parameter(name="socialMedia", in="path", description="Social Media's ID", required=true),
+   *    @OA\Response(response=200, description="Show Social Media"),
    *    @OA\Response(response="default", description="An error has occurred")
    * )
    */
-  public function show(Occupation $occupation)
+  public function show(SocialMedia $socialMedia)
   {
     return response()->json([
-      'data' => $occupation,
+      'data' => $socialMedia,
       'message' => 'Succeed'
     ], JsonResponse::HTTP_OK);
   }
@@ -102,24 +102,24 @@ class OccupationController extends Controller
   /**
    * Update the specified resource in storage.
    *
-   * @param  \App\Http\Requests\API\Occupations\UpdateOccupationRequest  $request
-   * @param  \App\Models\Occupation  $occupation
+   * @param  \App\Http\Requests\API\SocialMedia\UpdateSocialMediaRequest  $request
+   * @param  \App\Models\SocialMedia  $socialMedia
    * @return \Illuminate\Http\Response
    * 
    * @OA\Put(
-   *    path="/api/occupations/{occupation}",
-   *    tags={"occupations"},
-   *    summary="Update Occupation",
+   *    path="/api/social_media/{socialMedia}",
+   *    tags={"social media"},
+   *    summary="Update Social Media",
    *    security={{"sanctum":{}}},
-   *    @OA\Parameter(name="occupation", in="path", description="Occupation's ID", required=true),
-   *    @OA\Parameter(name="name", in="query", description="Occupation's Name", required=true),
-   *    @OA\Response(response=200, description="Occupation Updated")
+   *    @OA\Parameter(name="socialMedia", in="path", description="Social Media's ID", required=true),
+   *    @OA\Parameter(name="name", in="query", description="Social Media's Name", required=true),
+   *    @OA\Response(response=200, description="Social Media Updated")
    * )
    */
-  public function update(UpdateOccupationRequest $request, Occupation $occupation)
+  public function update(UpdateSocialMediaRequest $request, SocialMedia $socialMedia)
   {
     try {
-      $occupation->update([
+      $socialMedia->update([
         'name' => $request->name
       ]);
     } catch (\Throwable $th) {
@@ -130,7 +130,7 @@ class OccupationController extends Controller
     }
 
     return response()->json([
-      'data' => $occupation,
+      'data' => $socialMedia,
       'message' => 'Succeed'
     ], JsonResponse::HTTP_OK);
   }
@@ -138,23 +138,23 @@ class OccupationController extends Controller
   /**
    * Remove the specified resource from storage.
    *
-   * @param  \App\Models\Occupation  $occupation
+   * @param  \App\Models\SocialMedia  $socialMedia
    * @return \Illuminate\Http\Response
    * 
    * @OA\Delete(
-   *    path="/api/occupations/{occupation}",
-   *    tags={"occupations"},
-   *    summary="Delete Occupation",
+   *    path="/api/social_media/{socialMedia}",
+   *    tags={"social media"},
+   *    summary="Delete Social Media",
    *    security={{"sanctum":{}}},
-   *    @OA\Parameter(name="occupation", in="path", description="Occupation's ID", required=true),
-   *    @OA\Response(response=200, description="Occupation Deleted"),
+   *    @OA\Parameter(name="socialMedia", in="path", description="Social Media's ID", required=true),
+   *    @OA\Response(response=200, description="Social Media Deleted"),
    *    @OA\Response(response="default", description="An error has occurred")
    * )
    */
-  public function destroy(Occupation $occupation)
+  public function destroy(SocialMedia $socialMedia)
   {
     try {
-      $occupation->delete();
+      $socialMedia->delete();
     } catch (\Throwable $th) {
       return response()->json([
         'data' => [],
@@ -163,7 +163,7 @@ class OccupationController extends Controller
     }
 
     return response()->json([
-      'data' => $occupation,
+      'data' => $socialMedia,
       'message' => 'Succeed'
     ], JsonResponse::HTTP_OK);
   }
