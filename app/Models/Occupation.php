@@ -19,4 +19,12 @@ class Occupation extends Model
   protected $fillable = [
     'name'
   ];
+
+  /**
+   * Get the users for the occupation.
+   */
+  public function users()
+  {
+    return $this->hasMany(User::class);
+  }
 }

@@ -393,6 +393,237 @@
                     }
                 ]
             }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Users List",
+                "description": "Display a listing of the resource.",
+                "operationId": "d7a57f4d7de18fb0f92501172472c9b6",
+                "responses": {
+                    "200": {
+                        "description": "Show all users"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Create User",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "9fea6f2adcb69614c521a7733358382d",
+                "parameters": [
+                    {
+                        "name": "firstname",
+                        "in": "query",
+                        "description": "User's First name",
+                        "required": true
+                    },
+                    {
+                        "name": "lastname",
+                        "in": "query",
+                        "description": "User's Last name",
+                        "required": true
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User's Email",
+                        "required": true
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "User's Password",
+                        "required": true
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "User's Gender",
+                        "required": false
+                    },
+                    {
+                        "name": "birthdate",
+                        "in": "query",
+                        "description": "User's Birthdate",
+                        "required": false
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "User's Phone",
+                        "required": false
+                    },
+                    {
+                        "name": "website",
+                        "in": "query",
+                        "description": "User's Website",
+                        "required": false
+                    },
+                    {
+                        "name": "occupation",
+                        "in": "query",
+                        "description": "User's Occupation",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User Created"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/users/{user}": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "User",
+                "description": "Display the specified resource.",
+                "operationId": "8ef94a31920758a2ea8c4a11c4a85c73",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "User's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show User"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Update User",
+                "description": "Update the specified resource in storage.",
+                "operationId": "d8774c2ad802c372cefa655ff2fe989d",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "User's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "firstname",
+                        "in": "query",
+                        "description": "User's First name",
+                        "required": true
+                    },
+                    {
+                        "name": "lastname",
+                        "in": "query",
+                        "description": "User's Last name",
+                        "required": true
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User's Email",
+                        "required": true
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "User's Gender",
+                        "required": false
+                    },
+                    {
+                        "name": "birthdate",
+                        "in": "query",
+                        "description": "User's Birthdate",
+                        "required": false
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "User's Phone",
+                        "required": false
+                    },
+                    {
+                        "name": "website",
+                        "in": "query",
+                        "description": "User's Website",
+                        "required": false
+                    },
+                    {
+                        "name": "occupation",
+                        "in": "query",
+                        "description": "User's Occupation",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User Updated"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Delete User",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "d2769c9ccb9342ab54329ddb86aa438c",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "User's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User Deleted"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
         }
     },
     "components": {

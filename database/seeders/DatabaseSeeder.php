@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             OccupationSeeder::class,
             SocialMediaSeeder::class,
-            // UserSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
