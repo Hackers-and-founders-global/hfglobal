@@ -38,9 +38,15 @@
                 "operationId": "a718f172ff3ac464d723835815f8fb57",
                 "parameters": [
                     {
-                        "name": "name",
+                        "name": "firstname",
                         "in": "query",
-                        "description": "User's Name",
+                        "description": "User's First name",
+                        "required": true
+                    },
+                    {
+                        "name": "lastname",
+                        "in": "query",
+                        "description": "User's Last name",
                         "required": true
                     },
                     {
@@ -53,6 +59,36 @@
                         "name": "password",
                         "in": "query",
                         "description": "User's Password",
+                        "required": true
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "User's Gender",
+                        "required": false
+                    },
+                    {
+                        "name": "birthdate",
+                        "in": "query",
+                        "description": "User's Birthdate",
+                        "required": false
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "User's Phone",
+                        "required": false
+                    },
+                    {
+                        "name": "website",
+                        "in": "query",
+                        "description": "User's Website",
+                        "required": false
+                    },
+                    {
+                        "name": "occupation",
+                        "in": "query",
+                        "description": "User's Occupation",
                         "required": true
                     }
                 ],

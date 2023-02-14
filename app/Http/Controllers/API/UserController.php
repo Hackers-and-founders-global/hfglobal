@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\API\Users\RegisterUserRequest;
 use App\Http\Requests\API\Users\UpdateUserRequest;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -91,6 +92,8 @@ class UserController extends Controller
         'message'=>$th->getMessage()
       ], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
     }
+
+    event(new Registered($user));
 
     return response()->json([
       'data' => $user,
