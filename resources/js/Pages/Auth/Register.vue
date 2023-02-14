@@ -54,8 +54,7 @@ const submit = () => {
                     v-model="form.lastname"
                     type="text"
                     class="mt-1 block w-full"
-                    required
-                    autofocus
+                    required 
                     autocomplete="lastname"
                 />
                 <InputError class="mt-2" :message="form.errors.lastname" />

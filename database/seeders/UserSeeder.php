@@ -53,7 +53,7 @@ class UserSeeder extends Seeder
 
         User::factory()->create([
           'firstname' => 'Camilo',
-          'lastname' => 'Torres',
+          'lastname' => 'León',
           'email' => 'camilo@hf.cx',
           'password' => bcrypt('camilo123'),
           'gender' => 'M',
