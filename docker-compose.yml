@@ -1,0 +1,57 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: hfglobal
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: hf-global
+    container_name: hf-global-app
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - hf-global
+
+  db:
+    image: mysql:5.7.16
+    container_name: hf-global-db
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+    networks:
+      - hf-global
+
+  nginx:
+    image: nginx:alpine
+    container_name: hf-global-nginx
+    ports:
+      - 8003:80
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx:/etc/nginx/conf.d/
+    networks:
+      - hf-global
+
+  adminer:
+    image: adminer:latest
+    container_name: hf-global-adminer
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+      ADMINER_DESIGN: haeckel
+    ports:
+      - 8083:8080
+    networks:
+      - hf-global
+
+networks:
+  hf-global:
+    driver: bridge
