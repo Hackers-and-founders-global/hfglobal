@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
+use App\Models\{User, Occupation};
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
@@ -20,7 +20,9 @@ class DeleteApiTokenTest extends TestCase
             return;
         }
 
-        $this->actingAs($user = User::factory()->withPersonalTeam()->create());
+        $occupation = Occupation::factory()->create(['name' => 'Programación']);
+
+        $this->actingAs($user = User::factory()->withPersonalTeam()->create(['occupation_id' => $occupation->id]));
 
         $token = $user->tokens()->create([
             'name' => 'Test Token',

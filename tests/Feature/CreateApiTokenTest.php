@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
+use App\Models\{User, Occupation};
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Jetstream\Features;
 use Tests\TestCase;
@@ -19,7 +19,9 @@ class CreateApiTokenTest extends TestCase
             return;
         }
 
-        $this->actingAs($user = User::factory()->withPersonalTeam()->create());
+        $occupation = Occupation::factory()->create(['name' => 'Programación']);
+
+        $this->actingAs($user = User::factory()->withPersonalTeam()->create(['occupation_id' => $occupation->id]));
 
         $response = $this->post('/user/api-tokens', [
             'name' => 'Test Token',

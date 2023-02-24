@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Models\User;
+use App\Models\{User, Occupation};
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -20,7 +20,8 @@ class AuthenticationTest extends TestCase
 
     public function test_users_can_authenticate_using_the_login_screen(): void
     {
-        $user = User::factory()->create();
+        $occupation = Occupation::factory()->create(['name' => 'Programación']);
+        $user = User::factory()->create(['occupation_id' => $occupation->id]);
 
         $response = $this->post('/login', [
             'email' => $user->email,
@@ -33,7 +34,8 @@ class AuthenticationTest extends TestCase
 
     public function test_users_can_not_authenticate_with_invalid_password(): void
     {
-        $user = User::factory()->create();
+        $occupation = Occupation::factory()->create(['name' => 'Programación']);
+        $user = User::factory()->create(['occupation_id' => $occupation->id]);
 
         $this->post('/login', [
             'email' => $user->email,
