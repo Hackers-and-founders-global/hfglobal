@@ -63,9 +63,12 @@ jobs:
       - name: Install Dependencies
         run: composer install --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
         
-      - name: Copy DOTENV File
-        run: php -r "file_put_contents(__DIR__ . '/.env', '${{ secrets.DOT_ENV_HFGLOBAL_DEVELOP }}');"
-        
+#       - name: Copy DOTENV File
+#         run: php -r "file_put_contents(__DIR__ . '/.env', '${{ secrets.DOT_ENV_HFGLOBAL_DEVELOP }}');"
+      - name: Set DOTENV
+        env:
+          DOT_ENV: ${{ secrets.DOT_ENV_HFGLOBAL_DEVELOP }}
+      
       - name: Deploy
         uses: AEnterprise/rsync-deploy@v1.0
         env:
