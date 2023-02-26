@@ -17,10 +17,8 @@ jobs:
       mysql:
         image: mysql
         env:
-          MYSQL_DATABASE: test_db
-          MYSQL_USER: user
-          MYSQL_PASSWORD: password
           MYSQL_ROOT_PASSWORD: rootpassword
+          MYSQL_DATABASE: db_test
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -43,25 +41,23 @@ jobs:
           coverage: none
 
       - name: Copy ENV Laravel Configuration for CI
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+        run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
         
       - name: Install dependencies
         run: composer install --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
         
       - name: Generate key
         run: php artisan key:generate
+
+      - name: Execute Migrations
+        run: php artisan migrate
         
-      - name: Execute tests
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: vendor/bin/phpunit --verbose
-        env:
-          DB_HOST: 127.0.0.1
-          DB_DATABASE: test_db
-          DB_USERNAME: user
-          DB_PASSWORD: password
         
   deploy:
     runs-on: ubuntu-latest
-    # needs: tests
+    needs: tests
     if: github.ref == 'refs/heads/Development'
     steps:
       - name: Checkout Code
