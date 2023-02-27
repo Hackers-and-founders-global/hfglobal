@@ -21,9 +21,8 @@ use Illuminate\Support\Facades\Hash;
  *    @OA\License(name="MIT license", url="https://opensource.org/licenses/MIT")
  * )
  * 
+ * @OA\Server(url="https://hfglobal.hf.cx/", description="Test Server")
  * @OA\Server(url="http://hfglobal.local:8080/", description="Local Server")
- * @OA\Server(url="https://hfglobal.hfmaracay.com/", description="Test Server")
- * @OA\Server(url="https://hf.cx/", description="Production Server")
  * 
  * @OA\SecurityScheme(
  *    securityScheme="sanctum",
