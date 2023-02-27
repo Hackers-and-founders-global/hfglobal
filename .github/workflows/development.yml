@@ -37,7 +37,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1'
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, gd
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, mysql, sqlite, pdo_sqlite, gd
           coverage: none
 
       - name: Copy ENV Laravel Configuration for CI
@@ -71,38 +71,21 @@ jobs:
         with:
           path: vendor
           key: dependencies-php-composer-${{ hashFiles('**/composer.lock') }}
-          
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.1'
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, mysql, sqlite, pdo_sqlite, gd
-          coverage: none
-        
-      - name: Copy DOTENV File
-        run: |
-         touch .env
-         echo ${{ secrets.DOT_ENV_HFGLOBAL_DEVELOP }} >> .env
-          
-      - name: Install Dependencies
-        run: composer install --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
 
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.KEY }}
-          known_hosts: 'known-hosts-temp'
+      # - name: Install SSH Key
+      #   uses: shimataro/ssh-key-action@v2
+      #   with:
+      #     key: ${{ secrets.KEY }}
+      #     known_hosts: 'known-hosts-temp'
 
-      - name: Adding Known Hosts
-        run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+      # - name: Adding Known Hosts
+      #   run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
       
-      - name: Deploy
-        uses: AEnterprise/rsync-deploy@v1.0
-        env:
-          DEPLOY_KEY: ${{ secrets.KEY }}
-          ARGS: '-avzh --exclude=".*"'
-          SERVER_PORT: ${{ secrets.PORT }}
-          FOLDER: "./"
-          SERVER_IP: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          SERVER_DESTINATION: "/var/www/hfglobal"
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.KEY }}
+          script: "cd /var/www/hfglobal && ./.scripts/deploy_development.sh"
