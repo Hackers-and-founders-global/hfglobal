@@ -15,16 +15,12 @@
     },
     "servers": [
         {
-            "url": "http://hfglobal.local:8080/",
-            "description": "Local Server"
-        },
-        {
-            "url": "https://hfglobal.hfmaracay.com/",
+            "url": "https://hfglobal.hf.cx/",
             "description": "Test Server"
         },
         {
-            "url": "https://hf.cx/",
-            "description": "Production Server"
+            "url": "http://hfglobal.local:8080/",
+            "description": "Local Server"
         }
     ],
     "paths": {
@@ -139,6 +135,387 @@
                 "responses": {
                     "200": {
                         "description": "Logout User"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/countries": {
+            "get": {
+                "tags": [
+                    "countries"
+                ],
+                "summary": "Countries List",
+                "description": "Display a listing of the resource.",
+                "operationId": "124db23223a1f41b77e6de87362eaa2b",
+                "responses": {
+                    "200": {
+                        "description": "Show all countries"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "countries"
+                ],
+                "summary": "Create Country",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "3a95145d1f2576ea5063ecdd520f3e4d",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Country's Name",
+                        "required": true
+                    },
+                    {
+                        "name": "iso3",
+                        "in": "query",
+                        "description": "ISO 3",
+                        "required": false
+                    },
+                    {
+                        "name": "numeric_code",
+                        "in": "query",
+                        "description": "Numeric Code",
+                        "required": false
+                    },
+                    {
+                        "name": "iso2",
+                        "in": "query",
+                        "description": "ISO 2",
+                        "required": false
+                    },
+                    {
+                        "name": "phonecode",
+                        "in": "query",
+                        "description": "Phone Code",
+                        "required": false
+                    },
+                    {
+                        "name": "capital",
+                        "in": "query",
+                        "description": "Capital",
+                        "required": false
+                    },
+                    {
+                        "name": "currency",
+                        "in": "query",
+                        "description": "Currency",
+                        "required": false
+                    },
+                    {
+                        "name": "currency_name",
+                        "in": "query",
+                        "description": "Currency Name",
+                        "required": false
+                    },
+                    {
+                        "name": "currency_symbol",
+                        "in": "query",
+                        "description": "Currency Symbol",
+                        "required": false
+                    },
+                    {
+                        "name": "tld",
+                        "in": "query",
+                        "description": "TLD",
+                        "required": false
+                    },
+                    {
+                        "name": "native",
+                        "in": "query",
+                        "description": "Native",
+                        "required": false
+                    },
+                    {
+                        "name": "region",
+                        "in": "query",
+                        "description": "Region",
+                        "required": false
+                    },
+                    {
+                        "name": "subregion",
+                        "in": "query",
+                        "description": "Subregion",
+                        "required": false
+                    },
+                    {
+                        "name": "timezones",
+                        "in": "query",
+                        "description": "Timezones",
+                        "required": true
+                    },
+                    {
+                        "name": "translations",
+                        "in": "query",
+                        "description": "Translations",
+                        "required": true
+                    },
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Latitude",
+                        "required": false
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Longitude",
+                        "required": false
+                    },
+                    {
+                        "name": "emoji",
+                        "in": "query",
+                        "description": "Emoji",
+                        "required": false
+                    },
+                    {
+                        "name": "emojiU",
+                        "in": "query",
+                        "description": "Emoji U",
+                        "required": false
+                    },
+                    {
+                        "name": "flag",
+                        "in": "query",
+                        "description": "Flag",
+                        "required": false
+                    },
+                    {
+                        "name": "wikiDataId",
+                        "in": "query",
+                        "description": "WikiData Id",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Country Created"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/countries/{country}": {
+            "get": {
+                "tags": [
+                    "countries"
+                ],
+                "summary": "Country",
+                "description": "Display the specified resource.",
+                "operationId": "91f76e31796acf0a967791e3772cda68",
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "path",
+                        "description": "Country's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Country"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "countries"
+                ],
+                "summary": "Update Country",
+                "description": "Update the specified resource in storage.",
+                "operationId": "df5394040d06a30a573a828bf316e862",
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "path",
+                        "description": "Country's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Country's Name",
+                        "required": true
+                    },
+                    {
+                        "name": "iso3",
+                        "in": "query",
+                        "description": "ISO 3",
+                        "required": false
+                    },
+                    {
+                        "name": "numeric_code",
+                        "in": "query",
+                        "description": "Numeric Code",
+                        "required": false
+                    },
+                    {
+                        "name": "iso2",
+                        "in": "query",
+                        "description": "ISO 2",
+                        "required": false
+                    },
+                    {
+                        "name": "phonecode",
+                        "in": "query",
+                        "description": "Phone Code",
+                        "required": false
+                    },
+                    {
+                        "name": "capital",
+                        "in": "query",
+                        "description": "Capital",
+                        "required": false
+                    },
+                    {
+                        "name": "currency",
+                        "in": "query",
+                        "description": "Currency",
+                        "required": false
+                    },
+                    {
+                        "name": "currency_name",
+                        "in": "query",
+                        "description": "Currency Name",
+                        "required": false
+                    },
+                    {
+                        "name": "currency_symbol",
+                        "in": "query",
+                        "description": "Currency Symbol",
+                        "required": false
+                    },
+                    {
+                        "name": "tld",
+                        "in": "query",
+                        "description": "TLD",
+                        "required": false
+                    },
+                    {
+                        "name": "native",
+                        "in": "query",
+                        "description": "Native",
+                        "required": false
+                    },
+                    {
+                        "name": "region",
+                        "in": "query",
+                        "description": "Region",
+                        "required": false
+                    },
+                    {
+                        "name": "subregion",
+                        "in": "query",
+                        "description": "Subregion",
+                        "required": false
+                    },
+                    {
+                        "name": "timezones",
+                        "in": "query",
+                        "description": "Timezones",
+                        "required": true
+                    },
+                    {
+                        "name": "translations",
+                        "in": "query",
+                        "description": "Translations",
+                        "required": true
+                    },
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Latitude",
+                        "required": false
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Longitude",
+                        "required": false
+                    },
+                    {
+                        "name": "emoji",
+                        "in": "query",
+                        "description": "Emoji",
+                        "required": false
+                    },
+                    {
+                        "name": "emojiU",
+                        "in": "query",
+                        "description": "Emoji U",
+                        "required": false
+                    },
+                    {
+                        "name": "flag",
+                        "in": "query",
+                        "description": "Flag",
+                        "required": false
+                    },
+                    {
+                        "name": "wikiDataId",
+                        "in": "query",
+                        "description": "WikiData Id",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Country Updated"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "countries"
+                ],
+                "summary": "Delete Country",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "fb3b53e1c1d87def0ebd7ce7c0531453",
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "path",
+                        "description": "Country's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Country Deleted"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
                     }
                 },
                 "security": [

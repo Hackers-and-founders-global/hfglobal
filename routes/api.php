@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\OccupationController;
 use App\Http\Controllers\API\SocialMediaController;
+use App\Http\Controllers\API\CountryController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\AuthController;
 use GuzzleHttp\Middleware;
@@ -36,6 +37,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::apiResource('occupations', OccupationController::class);
     Route::apiResource('social_media', SocialMediaController::class);
+    Route::apiResource('countries', CountryController::class);
     Route::apiResource('users', UserController::class);
 
 
