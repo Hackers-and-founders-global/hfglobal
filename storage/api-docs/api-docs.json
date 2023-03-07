@@ -807,6 +807,251 @@
                 ]
             }
         },
+        "/api/countries/{country}/states": {
+            "get": {
+                "tags": [
+                    "states"
+                ],
+                "summary": "States List",
+                "description": "Display a listing of the resource.",
+                "operationId": "1a1cd4803ecfd43f8a9d85e1bd3b5bf1",
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "path",
+                        "description": "Country's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show all states"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "states"
+                ],
+                "summary": "Create State",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "199303e4ccf27055c3b7376a507f2877",
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "path",
+                        "description": "Country's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "State's Name",
+                        "required": true
+                    },
+                    {
+                        "name": "fips_code",
+                        "in": "query",
+                        "description": "Fips Code",
+                        "required": false
+                    },
+                    {
+                        "name": "iso2",
+                        "in": "query",
+                        "description": "ISO 2",
+                        "required": false
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Type",
+                        "required": false
+                    },
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Latitude",
+                        "required": false
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Longitude",
+                        "required": false
+                    },
+                    {
+                        "name": "flag",
+                        "in": "query",
+                        "description": "Flag",
+                        "required": false
+                    },
+                    {
+                        "name": "wikiDataId",
+                        "in": "query",
+                        "description": "WikiData Id",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Country Created"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/states/{state}": {
+            "get": {
+                "tags": [
+                    "states"
+                ],
+                "summary": "State",
+                "description": "Display the specified resource.",
+                "operationId": "cdaa6814a7f2f9e09cf19d1e0f678cdf",
+                "parameters": [
+                    {
+                        "name": "state",
+                        "in": "path",
+                        "description": "State's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show State"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "states"
+                ],
+                "summary": "Update State",
+                "description": "Update the specified resource in storage.",
+                "operationId": "23ebdd1c0498f6880013327e7afa4162",
+                "parameters": [
+                    {
+                        "name": "state",
+                        "in": "path",
+                        "description": "State's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "State's Name",
+                        "required": true
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "Country's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "fips_code",
+                        "in": "query",
+                        "description": "Fips Code",
+                        "required": false
+                    },
+                    {
+                        "name": "iso2",
+                        "in": "query",
+                        "description": "ISO 2",
+                        "required": false
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "Type",
+                        "required": false
+                    },
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Latitude",
+                        "required": false
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Longitude",
+                        "required": false
+                    },
+                    {
+                        "name": "flag",
+                        "in": "query",
+                        "description": "Flag",
+                        "required": false
+                    },
+                    {
+                        "name": "wikiDataId",
+                        "in": "query",
+                        "description": "WikiData Id",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "State Updated"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "states"
+                ],
+                "summary": "Delete State",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "6c78ced9e294bed363aeb266940dfa5e",
+                "parameters": [
+                    {
+                        "name": "state",
+                        "in": "path",
+                        "description": "State's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "State Deleted"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/api/users": {
             "get": {
                 "tags": [
