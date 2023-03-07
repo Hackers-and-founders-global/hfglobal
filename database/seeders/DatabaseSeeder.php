@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             SocialMediaSeeder::class,
             UserSeeder::class,
             CountrySeeder::class,
+            StateSeeder::class,
         ]);
     }
 }

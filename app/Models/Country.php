@@ -21,4 +21,12 @@ class Country extends Model
     'tld', 'native', 'region', 'subregion', 'timezones', 'translations', 'latitude', 'longitude', 'emoji', 'emojiU', 
     'flag', 'wikiDataId'
   ];
+
+  /**
+   * Get the states for the country.
+   */
+  public function states()
+  {
+    return $this->hasMany(State::class);
+  }
 }
