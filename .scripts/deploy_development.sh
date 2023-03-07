@@ -13,12 +13,6 @@ git pull origin Development
 # Install composer dependencies
 composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Clear the old cache
-php artisan clear-compiled
-
-# Recreate cache
-php artisan optimize
-
 # Install dependencies
 npm install
 
@@ -27,6 +21,18 @@ npm run build
 
 # Run database migrations
 php artisan migrate:fresh --seed
+
+# Clear the old cache
+php artisan clear-compiled
+
+# Recreate cache
+php artisan optimize
+
+# Optimizing Route Loading
+php artisan route:cache
+
+# Optimizing View Loading
+php artisan view:cache
 
 # Exit maintenance mode
 php artisan up
