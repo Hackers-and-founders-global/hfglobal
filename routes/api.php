@@ -4,6 +4,7 @@ use App\Http\Controllers\API\OccupationController;
 use App\Http\Controllers\API\SocialMediaController;
 use App\Http\Controllers\API\CountryController;
 use App\Http\Controllers\API\StateController;
+use App\Http\Controllers\API\CityController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\AuthController;
 use GuzzleHttp\Middleware;
@@ -44,6 +45,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     ]);
 
     Route::apiResource('countries.states', StateController::class)->shallow();
+    Route::apiResource('countries.cities', CityController::class)->shallow();
 
     /**
      * API route for logout user
