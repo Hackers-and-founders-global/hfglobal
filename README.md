@@ -9,6 +9,28 @@ Plataforma de la comunidad Hackers/Founders
 * _Instalar Laravel Jetstream 2.15_
 * _Instalar L5-Swagger 8.4_
 
+## Files Configuration
+
+* PHP Configuration
+
+  memory_limit = 256M
+  
+  On Windows: C:\PHP81\php.ini
+
+  On Linux (Ubuntu):
+
+    - For CLI: /etc/php/8.1/cli/php.ini
+    - For Apache: /etc/php/8.1/apache2/php.ini
+    - For PHP-FPM: /etc/php/8.1/fpm/php.ini
+
+* MySQL Configuration
+
+  max_allowed_packet=32M
+
+  On Windows: C:\ProgramData\MySQL\MySQL Server 8.0\my.ini
+
+  On Linux (Ubuntu): /etc/mysql/my.cnf
+
 ## Autores ✒️
 
 * **Dayan Betancourt** - *Desarrolladora Web* - [delfinbeta](https://github.com/delfinbeta)

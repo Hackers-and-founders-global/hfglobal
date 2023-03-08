@@ -37,4 +37,7 @@ php artisan view:cache
 # Exit maintenance mode
 php artisan up
 
+# www-data owner
+chown -R www-data:www-data /var/www/hfglobal
+
 echo "Deployment finished!"
