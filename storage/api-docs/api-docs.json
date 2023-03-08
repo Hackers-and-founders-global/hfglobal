@@ -144,6 +144,227 @@
                 ]
             }
         },
+        "/api/countries/{country}/cities": {
+            "get": {
+                "tags": [
+                    "cities"
+                ],
+                "summary": "Cities List",
+                "description": "Display a listing of the resource.",
+                "operationId": "3bd634421ee94c29906d5a42c4166a22",
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "path",
+                        "description": "Country's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show all cities"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "cities"
+                ],
+                "summary": "Create City",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "caab51035736093f5fddeddaa1a612de",
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "path",
+                        "description": "Country's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "City's Name",
+                        "required": true
+                    },
+                    {
+                        "name": "state_id",
+                        "in": "query",
+                        "description": "State's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Latitude",
+                        "required": true
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Longitude",
+                        "required": true
+                    },
+                    {
+                        "name": "flag",
+                        "in": "query",
+                        "description": "Flag",
+                        "required": false
+                    },
+                    {
+                        "name": "wikiDataId",
+                        "in": "query",
+                        "description": "WikiData Id",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Country Created"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/cities/{city}": {
+            "get": {
+                "tags": [
+                    "cities"
+                ],
+                "summary": "City",
+                "description": "Display the specified resource.",
+                "operationId": "ce7eb896074577148609326883f57e50",
+                "parameters": [
+                    {
+                        "name": "city",
+                        "in": "path",
+                        "description": "City's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show City"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "cities"
+                ],
+                "summary": "Update City",
+                "description": "Update the specified resource in storage.",
+                "operationId": "7360bd0848b9c0ce7c4e6aa3d0ae4be1",
+                "parameters": [
+                    {
+                        "name": "city",
+                        "in": "path",
+                        "description": "City's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "City's Name",
+                        "required": true
+                    },
+                    {
+                        "name": "state_id",
+                        "in": "query",
+                        "description": "State's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "Country's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "latitude",
+                        "in": "query",
+                        "description": "Latitude",
+                        "required": true
+                    },
+                    {
+                        "name": "longitude",
+                        "in": "query",
+                        "description": "Longitude",
+                        "required": true
+                    },
+                    {
+                        "name": "flag",
+                        "in": "query",
+                        "description": "Flag",
+                        "required": false
+                    },
+                    {
+                        "name": "wikiDataId",
+                        "in": "query",
+                        "description": "WikiData Id",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "City Updated"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "cities"
+                ],
+                "summary": "Delete City",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "30b11daf34a4292967b083ffc9ce894b",
+                "parameters": [
+                    {
+                        "name": "city",
+                        "in": "path",
+                        "description": "City's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "City Deleted"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/api/countries": {
             "get": {
                 "tags": [

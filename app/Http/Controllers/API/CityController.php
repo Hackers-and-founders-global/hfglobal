@@ -60,8 +60,8 @@ class CityController extends Controller
    *    @OA\Parameter(name="country", in="path", description="Country's ID", required=true),
    *    @OA\Parameter(name="name", in="query", description="City's Name", required=true),
    *    @OA\Parameter(name="state_id", in="query", description="State's ID", required=true),
-   *    @OA\Parameter(name="latitude", in="query", description="Latitude", required=false),
-   *    @OA\Parameter(name="longitude", in="query", description="Longitude", required=false),
+   *    @OA\Parameter(name="latitude", in="query", description="Latitude", required=true),
+   *    @OA\Parameter(name="longitude", in="query", description="Longitude", required=true),
    *    @OA\Parameter(name="flag", in="query", description="Flag", required=false),
    *    @OA\Parameter(name="wikiDataId", in="query", description="WikiData Id", required=false),
    *    @OA\Response(response=200, description="Country Created")
@@ -77,8 +77,8 @@ class CityController extends Controller
         'state_id' => $state->id,
         'state_code' => $state->iso2,
         'country_code' => $country->iso2,
-        'latitude' => $request->latitude ?? null,
-        'longitude' => $request->longitude ?? null,
+        'latitude' => $request->latitude,
+        'longitude' => $request->longitude,
         'flag' => $request->flag ?? 1,
         'wikiDataId' => $request->wikiDataId ?? null
       ]);
@@ -135,8 +135,8 @@ class CityController extends Controller
    *    @OA\Parameter(name="name", in="query", description="City's Name", required=true),
    *    @OA\Parameter(name="state_id", in="query", description="State's ID", required=true),
    *    @OA\Parameter(name="country_id", in="query", description="Country's ID", required=true),
-   *    @OA\Parameter(name="latitude", in="query", description="Latitude", required=false),
-   *    @OA\Parameter(name="longitude", in="query", description="Longitude", required=false),
+   *    @OA\Parameter(name="latitude", in="query", description="Latitude", required=true),
+   *    @OA\Parameter(name="longitude", in="query", description="Longitude", required=true),
    *    @OA\Parameter(name="flag", in="query", description="Flag", required=false),
    *    @OA\Parameter(name="wikiDataId", in="query", description="WikiData Id", required=false),
    *    @OA\Response(response=200, description="City Updated")
@@ -145,7 +145,7 @@ class CityController extends Controller
   public function update(UpdateCityRequest $request, City $city)
   {
     try {
-      $state = Country::findOrFail($request->state_id);
+      $state = State::findOrFail($request->state_id);
       $country = Country::findOrFail($request->country_id);
 
       $city->update([
@@ -154,8 +154,8 @@ class CityController extends Controller
         'state_code' => $state->iso2,
         'country_id' => $country->id,
         'country_code' => $country->iso2,
-        'latitude' => $request->latitude ?? null,
-        'longitude' => $request->longitude ?? null,
+        'latitude' => $request->latitude,
+        'longitude' => $request->longitude,
         'flag' => $request->flag ?? 1,
         'wikiDataId' => $request->wikiDataId ?? null
       ]);
