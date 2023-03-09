@@ -15,8 +15,24 @@ class CitySeeder extends Seeder
      */
     public function run()
     {
-        $path = 'database/sql/cities.sql';
+        $path = 'database/sql/cities1.sql';
         DB::unprepared(file_get_contents($path));
-        $this->command->info('Cities table seeded!');
+        $this->command->info('Cities 1 table seeded!');
+
+        $path = 'database/sql/cities2.sql';
+        DB::unprepared(file_get_contents($path));
+        $this->command->info('Cities 2 table seeded!');
+
+        $path = 'database/sql/cities3.sql';
+        DB::unprepared(file_get_contents($path));
+        $this->command->info('Cities 3 table seeded!');
+
+        $path = 'database/sql/cities4.sql';
+        DB::unprepared(file_get_contents($path));
+        $this->command->info('Cities 4 table seeded!');
+
+        $path = 'database/sql/cities5.sql';
+        DB::unprepared(file_get_contents($path));
+        $this->command->info('Cities 5 table seeded!');
     }
 }
