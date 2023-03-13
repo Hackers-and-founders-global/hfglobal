@@ -25,6 +25,6 @@ class SocialMedia extends Model
    */
   public function users()
   {
-    return $this->belongsToMany(User::class)->withPivot('url', 'created_at', 'updated_at');
+    return $this->belongsToMany(User::class)->withPivot('id', 'url')->withTimestamps();
   }
 }

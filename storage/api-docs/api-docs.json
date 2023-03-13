@@ -1028,6 +1028,167 @@
                 ]
             }
         },
+        "/api/users/{user}/social_medias": {
+            "get": {
+                "tags": [
+                    "social_media_user"
+                ],
+                "summary": "User's Social Media List",
+                "description": "Display a listing of the resource.",
+                "operationId": "3e1e40dee3ee30025012c9d4b5f44eca",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "User's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show all user's social media"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "social_media_user"
+                ],
+                "summary": "Create User's Social Media",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "112ad16291cfff638bbba2a8339d2928",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "User's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "social_media",
+                        "in": "query",
+                        "description": "Social Media's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Social Media's URL",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User's Social Media Created"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/social_medias/{social_media}": {
+            "get": {
+                "tags": [
+                    "social_media_user"
+                ],
+                "summary": "User's Social Media",
+                "description": "Display the specified resource.",
+                "operationId": "6361ffd760c65647b8870adc8507b931",
+                "parameters": [
+                    {
+                        "name": "social_media",
+                        "in": "path",
+                        "description": "SocialMedia-User ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show User's Social Media"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "social_media_user"
+                ],
+                "summary": "Update User's Social Media",
+                "description": "Update the specified resource in storage.",
+                "operationId": "feb51c6a7b862997de588a5b47071bed",
+                "parameters": [
+                    {
+                        "name": "social_media",
+                        "in": "path",
+                        "description": "SocialMedia-User ID",
+                        "required": true
+                    },
+                    {
+                        "name": "url",
+                        "in": "query",
+                        "description": "Social Media's URL",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User's Social Media Updated"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "social_media_user"
+                ],
+                "summary": "Delete User's Social Media",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "35265eb2f9c5e855150b319dfb1836d7",
+                "parameters": [
+                    {
+                        "name": "social_media",
+                        "in": "path",
+                        "description": "SocialMedia-User ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User's Social Media Deleted"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/api/countries/{country}/states": {
             "get": {
                 "tags": [

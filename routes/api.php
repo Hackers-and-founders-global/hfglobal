@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\CityController;
+use App\Http\Controllers\API\CountryController;
 use App\Http\Controllers\API\OccupationController;
 use App\Http\Controllers\API\SocialMediaController;
-use App\Http\Controllers\API\CountryController;
+use App\Http\Controllers\API\SocialMediaUserController;
 use App\Http\Controllers\API\StateController;
-use App\Http\Controllers\API\CityController;
 use App\Http\Controllers\API\UserController;
-use App\Http\Controllers\API\AuthController;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
 
     Route::apiResource('countries.states', StateController::class)->shallow();
     Route::apiResource('countries.cities', CityController::class)->shallow();
+    Route::apiResource('users.social_medias', SocialMediaUserController::class)->shallow();
 
     /**
      * API route for logout user
