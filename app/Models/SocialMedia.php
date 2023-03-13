@@ -19,4 +19,12 @@ class SocialMedia extends Model
   protected $fillable = [
     'name'
   ];
+
+  /**
+   * The users that belong to the social media.
+   */
+  public function users()
+  {
+    return $this->belongsToMany(User::class)->withPivot('url', 'created_at', 'updated_at');
+  }
 }

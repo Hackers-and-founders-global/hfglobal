@@ -85,4 +85,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(Occupation::class);
     }
+
+    /**
+     * The social_medias that belong to the user.
+     */
+    public function social_medias()
+    {
+        return $this->belongsToMany(SocialMedia::class)->withPivot('url', 'created_at', 'updated_at');
+    }
 }
