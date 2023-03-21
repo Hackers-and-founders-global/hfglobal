@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\ChapterController;
 use App\Http\Controllers\API\CityController;
 use App\Http\Controllers\API\CountryController;
 use App\Http\Controllers\API\OccupationController;
@@ -42,6 +43,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
         'occupations' => OccupationController::class,
         'social_media' => SocialMediaController::class,
         'countries' => CountryController::class,
+        'chapters' => ChapterController::class,
         'users' => UserController::class,
     ]);
 

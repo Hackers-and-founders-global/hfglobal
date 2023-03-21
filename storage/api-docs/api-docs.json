@@ -144,6 +144,195 @@
                 ]
             }
         },
+        "/api/chapters": {
+            "get": {
+                "tags": [
+                    "chapters"
+                ],
+                "summary": "Chapters List",
+                "description": "Display a listing of the resource.",
+                "operationId": "a09e626f11a0679cdf99643029b567b1",
+                "responses": {
+                    "200": {
+                        "description": "Show all chapters"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "chapters"
+                ],
+                "summary": "Create Chapter",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "866975f2ef9c930eaee84478c48264c7",
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "query",
+                        "description": "Country's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "city",
+                        "in": "query",
+                        "description": "City's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "leader",
+                        "in": "query",
+                        "description": "LEader's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "year",
+                        "in": "query",
+                        "description": "Foundation's Year",
+                        "required": true
+                    },
+                    {
+                        "name": "website",
+                        "in": "query",
+                        "description": "Website",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Chapter Created"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/chapters/{chapter}": {
+            "get": {
+                "tags": [
+                    "chapters"
+                ],
+                "summary": "Chapter",
+                "description": "Display the specified resource.",
+                "operationId": "a7079879d9120c5397b80a3491e3aec2",
+                "parameters": [
+                    {
+                        "name": "chapter",
+                        "in": "path",
+                        "description": "Chapter's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show Chapter"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "chapters"
+                ],
+                "summary": "Update Chapter",
+                "description": "Update the specified resource in storage.",
+                "operationId": "1d3e8614fe55fe95aa131f66e2416351",
+                "parameters": [
+                    {
+                        "name": "chapter",
+                        "in": "path",
+                        "description": "Chapter's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "country",
+                        "in": "query",
+                        "description": "Country's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "city",
+                        "in": "query",
+                        "description": "City's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "leader",
+                        "in": "query",
+                        "description": "LEader's ID",
+                        "required": true
+                    },
+                    {
+                        "name": "year",
+                        "in": "query",
+                        "description": "Foundation's Year",
+                        "required": true
+                    },
+                    {
+                        "name": "website",
+                        "in": "query",
+                        "description": "Website",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Chapter Updated"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "chapters"
+                ],
+                "summary": "Delete Chapter",
+                "description": "Remove the specified resource from storage.",
+                "operationId": "afbb2d0c6766a7964d73e79093adc642",
+                "parameters": [
+                    {
+                        "name": "chapter",
+                        "in": "path",
+                        "description": "Chapter's ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Chapter Deleted"
+                    },
+                    "default": {
+                        "description": "An error has occurred"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
         "/api/countries/{country}/cities": {
             "get": {
                 "tags": [
