@@ -93,4 +93,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(SocialMedia::class)->withPivot('id', 'url')->withTimestamps();
     }
+
+    /**
+     * Get the chapter associated with the user.
+     */
+    public function chapter()
+    {
+        return $this->hasOne(Chapter::class, 'leader_id');
+    }
 }

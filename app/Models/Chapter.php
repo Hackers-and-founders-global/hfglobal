@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class City extends Model
+class Chapter extends Model
 {
   use HasFactory;
   use SoftDeletes;
@@ -17,11 +17,11 @@ class City extends Model
    * @var array
    */
   protected $fillable = [
-    'name', 'state_id', 'state_code', 'country_id', 'country_code', 'latitude', 'longitude', 'flag', 'wikiDataId'
+    'country_id', 'city_id', 'leader_id', 'year', 'website'
   ];
 
   /**
-   * Get the country that owns the city.
+   * Get the country that owns the chapter.
    */
   public function country()
   {
@@ -29,10 +29,18 @@ class City extends Model
   }
 
   /**
-   * Get the state that owns the city.
+   * Get the city that owns the chapter.
    */
-  public function state()
+  public function city()
   {
-    return $this->belongsTo(State::class);
+    return $this->belongsTo(City::class);
+  }
+
+  /**
+   * Get the leader that owns the chapter.
+   */
+  public function leader()
+  {
+    return $this->belongsTo(User::class, 'leader_id');
   }
 }

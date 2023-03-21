@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             StateSeeder::class,
             CitySeeder::class,
             SocialMediaUserSeeder::class,
+            ChapterSeeder::class,
         ]);
     }
 }
